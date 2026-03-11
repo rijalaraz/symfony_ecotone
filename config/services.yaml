@@ -28,3 +28,6 @@ services:
         class: Enqueue\AmqpExt\AmqpConnectionFactory
         arguments:
             - "amqp://guest:guest@localhost:5672//"
+
+    Enqueue\Dbal\DbalConnectionFactory:
+        class: Enqueue\Dbal\DbalConnectionFactory
