@@ -14,8 +14,6 @@ use Ecotone\Modelling\Attribute\EventSourcingHandler;
 use Ecotone\Modelling\WithAggregateVersioning;
 use Ramsey\Uuid\Uuid;
 
-#[ORM\Entity]
-#[Table("products")]
 #[EventSourcingAggregate]
 class Product
 {
@@ -23,16 +21,11 @@ class Product
 
     use WithAggregateVersioning;
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type:"string",unique: true)]
     #[AggregateIdentifier]
     private string $productId;
 
-    #[ORM\Column(length: 255)]
     private string $name;
 
-    #[ORM\Column]
     private int $price;
 
     #[Distributed]
@@ -46,21 +39,6 @@ class Product
                 $command->price
             )
         ];
-    }
-
-    public function getProductId(): string
-    {
-        return $this->productId;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getPrice(): int
-    {
-        return $this->price;
     }
 
     #[EventSourcingHandler]
