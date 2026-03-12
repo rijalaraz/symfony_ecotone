@@ -9,10 +9,6 @@ services:
 
     mysql:
         image: 'mysql:8.0'
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-            interval: 5s
-            retries: 10
         working_dir: /myecotone
         volumes:
             - '.:/myecotone'
