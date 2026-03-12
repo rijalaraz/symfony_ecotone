@@ -17,6 +17,8 @@ use Ramsey\Uuid\Uuid;
 #[Aggregate]
 class Product
 {
+    const CREATE_PRODUCT_PRODUCT = "product.createProduct";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type:"string",unique: true)]
@@ -29,8 +31,8 @@ class Product
     #[ORM\Column]
     private int $price;
 
-    #[Distributed()]
-    #[CommandHandler(self::PREPARE_TICKET_TICKET)]
+    #[Distributed]
+    #[CommandHandler(self::CREATE_PRODUCT_PRODUCT)]
     public static function create(CreateProduct $command): array
     {
         return [
