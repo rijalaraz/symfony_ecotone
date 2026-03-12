@@ -75,15 +75,15 @@ add your own hostname on your <code>/etc/hosts</code></p>
 <tbody>
 <tr>
   <td>Webserver</td>
-  <td><a href="http://localhost:3000">localhost:3000</a></td>
+  <td><a href="http://localhost:51000">localhost:51000</a></td>
 </tr>
 <tr>
   <td>Mailhog web interface</td>
-  <td><a href="http://localhost:3001">localhost:3001</a></td>
+  <td><a href="http://localhost:51001">localhost:51001</a></td>
 </tr>
 <tr>
-  <td>MySQL</td>
-  <td><strong>host:</strong> <code>localhost</code>; <strong>port:</strong> <code>3002</code></td>
+  <td>PostgreSQL</td>
+  <td><strong>host:</strong> <code>localhost</code>; <strong>port:</strong> <code>51004</code></td>
 </tr>
 </tbody>
 </table>
@@ -107,9 +107,9 @@ add your own hostname on your <code>/etc/hosts</code></p>
   <td>9000</td>
 </tr>
 <tr>
-  <td>MySQL</td>
-  <td>mysql</td>
-  <td>3306 (default)</td>
+  <td>Postgres</td>
+  <td>postgres</td>
+  <td>5432 (default)</td>
 </tr>
 <tr>
   <td>SMTP (Mailhog)</td>
@@ -146,7 +146,7 @@ to run. Examples:
 <p>As in all server environments, your application needs the correct file permissions to work properly. You can change the
 files throughout the container, so you won't care if the user exists or has the same ID on your host.</p>
 
-<p><code>docker-compose exec php-fpm chown -R www-data:www-data /myecotone/public</code></p>
+<p><code>docker-compose exec php-fpm chown -R www-data:www-data /home/rija/www/symfony-ecotone/public</code></p>
 
 <h1>Recommendations</h1>
 
