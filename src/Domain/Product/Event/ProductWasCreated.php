@@ -2,7 +2,7 @@
 
 namespace App\Domain\Product\Event;
 
-final class ProductWasCreated
+final readonly class ProductWasCreated
 {
     public function __construct(
         public string $productId,
