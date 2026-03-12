@@ -2,39 +2,40 @@
 
 namespace App\Domain\Product;
 
+use App\Domain\Product\Command\CreateProduct;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
 use Ecotone\Modelling\Attribute\Aggregate;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
 
 #[ORM\Entity]
-#[Aggregate]
 #[Table("products")]
+#[Aggregate]
 class Product
 {
     #[ORM\Id]
-    #[AggregateIdentifier]
     #[ORM\GeneratedValue]
     #[ORM\Column(type:"string",unique: true)]
-    private ?int $id = null;
+    #[AggregateIdentifier]
+    private string $productId;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private int $price;
 
-    public function getId(): ?int
+    public function getProductId(): string
     {
-        return $this->id;
+        return $this->productId;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): int
     {
         return $this->price;
     }
