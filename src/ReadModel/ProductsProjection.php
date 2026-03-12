@@ -35,11 +35,11 @@ final class ProductsProjection
     #[ProjectionInitialization]
     public function initializeProjection() : void
     {
-        if ($this->connection->createSchemaManager()->tablesExist('products')) {
+        if ($this->connection->createSchemaManager()->tablesExist(self::TABLE_NAME)) {
             return;
         }
 
-        $table = new Table('products');
+        $table = new Table(self::TABLE_NAME);
 
         $table->addColumn('productId', Types::STRING);
         $table->addColumn('name', Types::STRING);
