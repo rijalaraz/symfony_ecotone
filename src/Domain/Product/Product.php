@@ -4,8 +4,6 @@ namespace App\Domain\Product;
 
 use App\Domain\Product\Command\CreateProduct;
 use App\Domain\Product\Event\ProductWasCreated;
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Table;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
 use Ecotone\Modelling\Attribute\CommandHandler;
 use Ecotone\Modelling\Attribute\Distributed;
