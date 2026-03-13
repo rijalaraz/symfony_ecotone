@@ -45,6 +45,10 @@ final class ProductsProjection
         $table->addColumn('name', Types::STRING);
         $table->addColumn('price', Types::INTEGER);
 
+        $table->setPrimaryKey(['productId']);
+
+        $table->addUniqueIndex(['productId']);
+
         $this->connection->createSchemaManager()->createTable($table);
     }
 }
