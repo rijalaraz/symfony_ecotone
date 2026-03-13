@@ -31,3 +31,5 @@ services:
 
     Enqueue\Dbal\DbalConnectionFactory:
         class: Enqueue\Dbal\DbalConnectionFactory
+        arguments:
+            - "%env(resolve:DATABASE_URL)%"
