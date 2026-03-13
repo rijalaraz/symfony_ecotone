@@ -22,7 +22,7 @@ final class ProductsProjection
         private Connection $connection
     ){}
 
-    #[EventHandler(endpointId:"ProductsProjection::onProductWasCreated")]
+    #[EventHandler]
     public function onProductWasCreated(ProductWasCreated $event) : void
     {
         $this->connection->insert(self::TABLE_NAME, [
@@ -41,13 +41,13 @@ final class ProductsProjection
 
         $table = new Table(self::TABLE_NAME);
 
-        $table->addColumn('productId', Types::STRING);
+        $table->addColumn('product_id', Types::STRING);
         $table->addColumn('name', Types::STRING);
         $table->addColumn('price', Types::INTEGER);
 
-        $table->setPrimaryKey(['productId']);
+        $table->setPrimaryKey(['product_id']);
 
-        $table->addUniqueIndex(['productId']);
+        $table->addUniqueIndex(['product_id']);
 
         $this->connection->createSchemaManager()->createTable($table);
     }

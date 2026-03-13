@@ -19,7 +19,7 @@ final class ProductsApiController extends AbstractController
     #[Route('/api/products', methods:['POST'])]
     public function createAction(Request $request): JsonResponse
     {
-        $product = $this->commandBus->sendWithRouting(
+        $productId = $this->commandBus->sendWithRouting(
             Product::CREATE_PRODUCT_PRODUCT,
             $request->getContent(),
             "application/json",
@@ -27,7 +27,9 @@ final class ProductsApiController extends AbstractController
 
         return $this->json([
             'message' => 'Product created successfully!',
-            'data' => $product,
+            'data' => [
+                'productId' => $productId
+            ]
         ], Response::HTTP_CREATED);
     }
 }

@@ -34,7 +34,7 @@ class Product
     {
         return [
             new ProductWasCreated(
-                $command->productId ?: Uuid::uuid4()->toString(),
+                Uuid::uuid4()->toString(),
                 $command->name,
                 $command->price
             )
