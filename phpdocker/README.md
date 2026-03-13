@@ -30,9 +30,9 @@ add your own hostname on your `/etc/hosts`
 
 Service|Address outside containers
 -------|--------------------------
-Webserver|[localhost:51000](http://localhost:51000)
-Mailhog web interface|[localhost:51001](http://localhost:51001)
-PostgreSQL|**host:** `localhost`; **port:** `51004`
+Webserver|[localhost:8000](http://localhost:8000)
+Mailhog web interface|[localhost:8001](http://localhost:8001)
+MySQL|**host:** `localhost`; **port:** `8002`
 
 ## Hosts within your environment ##
 
@@ -41,7 +41,9 @@ You'll need to configure your application to use any services you enabled:
 Service|Hostname|Port number
 ------|---------|-----------
 php-fpm|php-fpm|9000
-Postgres|postgres|5432 (default)
+MySQL|mysql|3306 (default)
+Redis|redis|6379 (default)
+Elasticsearch|elasticsearch|9200 (HTTP default) / 9300 (ES transport default)
 SMTP (Mailhog)|mailhog|1025 (default)
 
 # Docker compose cheatsheet #
@@ -66,7 +68,7 @@ SMTP (Mailhog)|mailhog|1025 (default)
 As in all server environments, your application needs the correct file permissions to work properly. You can change the
 files throughout the container, so you won't care if the user exists or has the same ID on your host.
 
-`docker-compose exec php-fpm chown -R www-data:www-data /home/rija/www/symfony-ecotone/public`
+`docker-compose exec php-fpm chown -R www-data:www-data /home/rija/www/symfony-ecotone/public/public`
 
 # Recommendations #
 
